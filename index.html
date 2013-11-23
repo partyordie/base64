@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>sixfour</title>
+<style>
+	#outpt {
+		overflow: hidden;
+		width: 800px;
+		-ms-word-wrap: break-word;
+		word-wrap: break-word;
+	}
+</style>
+</head>
+<body>
+<form action="#"><input type="file" name="file" id="file" multiple><input type="submit" value="file"></form>
+<div id="outpt"></div>
+<script>
+
+function processFiles(evt) {
+	var files = evt.target.files,
+		outpt = document.getElementById('outpt');
+
+	if (!files) {
+		alert('Failed to load files');
+		return;
+	}
+
+	for (var i=0, file; file=files[i]; i++) {
+		var fr = new FileReader();
+
+		fr.onload = (function(file) {
+			return function(e) {
+				if (file.size > 1048576) return;
+				var contents = e.target.result;
+				outpt.innerText = btoa(contents);
+			};
+		})(file);
+
+		fr.readAsBinaryString(file);
+	}
+}
+
+document.getElementById('file').addEventListener('change', processFiles, false);
+
+</script>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
