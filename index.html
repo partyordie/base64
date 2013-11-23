@@ -13,13 +13,14 @@
 </style>
 </head>
 <body>
-<form action="#"><input type="file" name="file" id="file" multiple><input type="submit" value="file"></form>
+<form action="#"><input type="file" name="files" id="files" multiple></form>
 <div id="outpt"></div>
 <script>
 
 function processFiles(evt) {
 	var files = evt.target.files,
 		outpt = document.getElementById('outpt');
+
 
 	if (!files) {
 		alert('Failed to load files');
@@ -33,7 +34,7 @@ function processFiles(evt) {
 			return function(e) {
 				if (file.size > 1048576) return;
 				var contents = e.target.result;
-				outpt.innerText = btoa(contents);
+				outpt.textContent = btoa(contents);
 			};
 		})(file);
 
@@ -41,7 +42,7 @@ function processFiles(evt) {
 	}
 }
 
-document.getElementById('file').addEventListener('change', processFiles, false);
+document.getElementById('files').addEventListener('change', processFiles, false);
 
 </script>
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
