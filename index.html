@@ -17,7 +17,7 @@
 <div id="outpt"></div>
 <script>
 
-function processFiles(evt) {
+function handleFiles(evt) {
 	var files = evt.target.files,
 		outpt = document.getElementById('outpt');
 
@@ -42,9 +42,8 @@ function processFiles(evt) {
 	}
 }
 
-document.getElementById('files').addEventListener('change', processFiles, false);
+document.getElementById('files').addEventListener('change', handleFiles, false);
 
 </script>
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>
