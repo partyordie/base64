@@ -1,0 +1,8 @@
+#outpt {
+	overflow: hidden;
+
+	width: 800px;
+
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
